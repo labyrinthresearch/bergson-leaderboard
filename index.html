@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bergson Finetuning Leaderboard</title>
+<style>
+  :root {
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --muted: #898781;
+  }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 56px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 650;
+    margin: 0 0 28px;
+  }
+  figure {
+    margin: 0 0 40px;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  footer {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a {
+    color: inherit;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Bergson Finetuning Leaderboard</h1>
+  <figure>
+    <img src="figures/lds_leaderboard.png"
+         alt="Dot plot of LDS with 95% confidence intervals per attribution method, colored by method family">
+  </figure>
+  <figure>
+    <img src="figures/qld_leaderboard.png"
+         alt="Dot plot of proponent QLD with 95% confidence intervals per attribution method on a log axis, with per-sequence and per-token series">
+  </figure>
+  <footer>
+    <a href="https://github.com/EleutherAI/bergson">EleutherAI/bergson</a> ·
+    <a href="https://github.com/labyrinthresearch/bergson-leaderboard">plot source</a>
+  </footer>
+</main>
+</body>
+</html>
