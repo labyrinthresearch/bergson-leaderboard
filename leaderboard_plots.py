@@ -17,7 +17,7 @@ MUTED = "#898781"
 GRID = "#e1e0d9"
 
 FAMILIES = {
-    "magic": ("#2a78d6", "MAGIC"),
+    "magic": ("#2a78d6", "Metadifferentiation"),
     "influence": ("#eb6834", "Influence function"),
     "projected": ("#1baf7a", "Projected influence function"),
     "rawgrad": ("#eda100", "Gradients"),
