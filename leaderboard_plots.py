@@ -21,7 +21,7 @@ FAMILIES = {
     "influence": ("#eb6834", "Influence function"),
     "projected": ("#1baf7a", "Projected influence function"),
     "rawgrad": ("#eda100", "Gradients"),
-    "nongrad": ("#4a3aa7", "Non-gradient baseline"),
+    "nongrad": ("#4a3aa7", "Gradient-free baseline"),
 }
 
 # (label, family, LDS (lo, hi), QLD (lo, hi), per-token QLD (lo, hi) or None)
