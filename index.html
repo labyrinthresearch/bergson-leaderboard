@@ -34,6 +34,179 @@
     width: 100%;
     height: auto;
   }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 650;
+    margin: 48px 0 12px;
+  }
+  p, figcaption, caption {
+    line-height: 1.5;
+  }
+  figcaption, caption {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: left;
+    margin-top: 8px;
+  }
+  caption {
+    caption-side: bottom;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 40px;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+  th, td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e1e0d9;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    font-weight: 600;
+  }
+  td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .share-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  .share-controls input {
+    flex: 1 1 240px;
+    max-width: 420px;
+    accent-color: var(--ink);
+  }
+  .share-controls output {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    min-width: 3.5em;
+  }
+  .share-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  .share-legend i, .share-tip i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+  }
+  .share-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 18px;
+  }
+  @media (max-width: 860px) { .share-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .share-grid { grid-template-columns: 1fr; } }
+  .share-title {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+  .share-panel svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .share-panel .band {
+    stroke: var(--surface);
+    stroke-width: 1;
+  }
+  .share-panel .tick {
+    font-size: 9px;
+    fill: var(--muted);
+  }
+  .share-panel .cross {
+    stroke: var(--ink);
+    stroke-width: 1;
+  }
+  .share-tip {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    background: var(--surface);
+    border: 1px solid #e1e0d9;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 320px;
+  }
+  .share-tip span {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .calc-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px 20px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .calc-controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .calc-controls output {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .calc-controls input, .calc-controls select {
+    accent-color: var(--ink);
+    width: 100%;
+  }
+  .calc-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .calc-legend i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+  }
+  #calc-chart svg {
+    display: block;
+    font-family: inherit;
+  }
+  .calc-grid {
+    stroke: #e1e0d9;
+    stroke-width: 1;
+  }
+  .calc-guide {
+    stroke: #efeee9;
+    stroke-width: 1;
+  }
+  .calc-tick {
+    font-size: 10px;
+    fill: var(--muted);
+  }
+  .calc-label, .calc-value {
+    font-size: 11.5px;
+    fill: var(--ink);
+  }
   footer {
     font-size: 0.85rem;
     color: var(--muted);
@@ -54,6 +227,262 @@
     <img src="figures/qld_leaderboard.png"
          alt="Dot plot of proponent QLD with 95% confidence intervals per attribution method on a log axis, with per-sequence and per-token series">
   </figure>
+  <h2>Speed</h2>
+  <p>How long each method takes, as <a href="https://github.com/labyrinthresearch/bergson-estimate">bergson-estimate</a> predicts for its leaderboard recipe on one node of 8 NVIDIA A40s (48 CPU cores, <code>NCCL_P2P_LEVEL=SYS</code>, PyTorch 2.13.0, bergson <code>main</code> at <code>320cedb9</code>, and at <code>15caf720</code> for KFAC (projection 64), which <a href="https://github.com/EleutherAI/bergson/pull/543">#543</a> changed). Times run from launch to exit: they include worker startup, reading the model from the page cache and writing the scores, and leave out downloads and training the attributed model, except for TRAK, whose eight models are part of the method. Every recipe runs on all eight GPUs; the leaderboard's own configs use two, four or eight. Against real runs on this node the estimator came within 10% for most recipes (<a href="https://github.com/labyrinthresearch/bergson-estimate#accuracy">accuracy table</a>); its LiSSA estimate is about a quarter of the one real run.</p>
+  <figure id="calc">
+    <div class="calc-controls">
+      <label>Training documents <output id="calc-n-out">4,608</output>
+        <input type="range" id="calc-n" min="3.0615" max="6.0717" step="0.0001" value="3.6635"></label>
+      <label>Queries <output id="calc-q-out">50</output>
+        <input type="range" id="calc-q" min="0" max="3" step="0.0001" value="1.69897"></label>
+      <label>Hardware
+        <select id="calc-hw">
+          <option value="a40">One node of 8x A40</option>
+          <option value="gh200">Nodes of 4x GH200</option>
+        </select></label>
+      <label id="calc-nodes-label">Nodes <output id="calc-nodes-out">1</output>
+        <input type="range" id="calc-nodes" min="0" max="3" step="1" value="0"></label>
+    </div>
+    <div class="calc-legend" id="calc-legend"></div>
+    <div id="calc-chart" role="img" aria-label="Estimated time of each method for the chosen dataset size, queries and hardware"></div>
+    <figcaption>Each method's estimated time, live: drag the sliders. Times come from the fitted cost model of the one-node A40 estimates; on GH200 nodes each stage is scaled by its estimated time on that many nodes against one A40 node, at 4,608 and 73,728 documents with 50 queries, interpolated between them. Treat GH200 times as rough. MAGIC and unrolled Gauss-Newton leave out training the model, and LiSSA is underestimated.</figcaption>
+  </figure>
+  <figure>
+    <img src="figures/speed_pareto.png"
+         alt="LDS against estimated hours on one node at the leaderboard's 4,608 documents and 50 queries, per method, colored by family, with measured runs as open circles">
+    <figcaption>LDS against time at the leaderboard's 4,608 training documents and 50 queries. Open circles are real runs of the same recipe on this node.</figcaption>
+  </figure>
+<!-- speed-tables:stages -->
+  <div class="table-wrap"><table><caption>Each method's stages at the leaderboard's 4,608 training documents and 50 queries, estimated for one 8x A40 node. LiSSA's one real run took 25.4 hours, about four times its estimate.</caption><thead><tr><th>Method</th><th>LDS</th><th>Total</th><th>Longest stage</th><th>Stages, longest first</th><th>Peak GiB per GPU</th></tr></thead><tbody><tr><td>MAGIC</td><td class=num>0.931</td><td class=num>7.8 h</td><td>Backward through training</td><td>Backward through training 6.0 h · Trainer-state copies 1.6 h · Checkpoint I/O 16 min · Startup and overhead 61 s · Query gradients 8 s</td><td class=num>28.0</td></tr><tr><td>Unrolled Gauss-Newton</td><td class=num>0.819</td><td class=num>76 min</td><td>Backward through training</td><td>Backward through training 73 min · Trainer-state copies 2 min · Startup and overhead 27 s · Checkpoint I/O 20 s · Query gradients 8 s</td><td class=num>24.7</td></tr><tr><td>EKFAC + CG</td><td class=num>0.685</td><td class=num>14 min</td><td>ASTRA refinement</td><td>ASTRA refinement 5 min · Eigenvalue correction 3 min · Covariance fit 2 min · Query preconditioning 2 min · Startup and overhead 70 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 13 s</td><td class=num>23.8</td></tr><tr><td>EKFAC + ASTRA</td><td class=num>0.605</td><td class=num>19 min</td><td>ASTRA refinement</td><td>ASTRA refinement 10 min · Eigenvalue correction 3 min · Covariance fit 2 min · Query preconditioning 2 min · Startup and overhead 70 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 13 s</td><td class=num>18.2</td></tr><tr><td>Eigenvalue-corrected Shampoo + ASTRA</td><td class=num>0.625</td><td class=num>18 min</td><td>ASTRA refinement</td><td>ASTRA refinement 10 min · Eigenvalue correction 3 min · Query preconditioning 2 min · Covariance fit 78 s · Startup and overhead 70 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 13 s</td><td class=num>18.2</td></tr><tr><td>LiSSA (underestimated)</td><td class=num>0.572</td><td class=num>6.5 h</td><td>LiSSA iterations</td><td>LiSSA iterations 6.5 h · Training gradients and scoring 49 s · Startup and overhead 46 s · Query gradients 37 s</td><td class=num>18.2</td></tr><tr><td>Eigenvalue-corrected Shampoo</td><td class=num>0.517</td><td class=num>8 min</td><td>Eigenvalue correction</td><td>Eigenvalue correction 3 min · Query preconditioning 2 min · Covariance fit 78 s · Startup and overhead 57 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 13 s</td><td class=num>18.2</td></tr><tr><td>SOURCE (Adam)</td><td class=num>0.473</td><td class=num>49 min</td><td>Checkpoint averaged lambda</td><td>Checkpoint averaged lambda 16 min · Covariance fit 11 min · Apply eigfn to query 8 min · Startup and overhead 6 min · Training gradients and scoring 5 min · Training replay 87 s · Query gradients 37 s · Aggregate segment covariances 31 s · Eigendecomposition 20 s · Checkpoint saves 19 s · Sum sharded dirs 1 s</td><td class=num>18.2</td></tr><tr><td>EKFAC</td><td class=num>0.454</td><td class=num>9 min</td><td>Eigenvalue correction</td><td>Eigenvalue correction 3 min · Covariance fit 2 min · Query preconditioning 2 min · Startup and overhead 57 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 13 s</td><td class=num>18.2</td></tr><tr><td>KFAC</td><td class=num>0.420</td><td class=num>6 min</td><td>Covariance fit</td><td>Covariance fit 2 min · Query preconditioning 2 min · Startup and overhead 57 s · Training gradients and scoring 49 s · Query gradients 37 s · Eigendecomposition 12 s</td><td class=num>18.2</td></tr><tr><td>TrackStar (no optimizer)</td><td class=num>0.276</td><td class=num>7 min</td><td>Eigendecomposition</td><td>Eigendecomposition 3 min · Training gradients and scoring 87 s · Query gradients 68 s · Startup and overhead 63 s · Covariance fit 19 s</td><td class=num>6.5</td></tr><tr><td>TrackStar (Adam)</td><td class=num>0.242</td><td class=num>7 min</td><td>Eigendecomposition</td><td>Eigendecomposition 3 min · Training gradients and scoring 2 min · Query gradients 69 s · Startup and overhead 67 s · Covariance fit 23 s</td><td class=num>8.4</td></tr><tr><td>Gradient cosine similarity</td><td class=num>0.156</td><td class=num>2 min</td><td>Training gradients and scoring</td><td>Training gradients and scoring 53 s · Query gradients 41 s · Startup and overhead 35 s</td><td class=num>18.2</td></tr><tr><td>Gradient dot product</td><td class=num>0.156</td><td class=num>2 min</td><td>Training gradients and scoring</td><td>Training gradients and scoring 49 s · Query gradients 37 s · Startup and overhead 35 s</td><td class=num>18.2</td></tr><tr><td>TRAK (8-model ensemble)</td><td class=num>0.138</td><td class=num>17.3 h</td><td>Training gradients and scoring</td><td>Training gradients and scoring 8.5 h · Covariance fit 8.4 h · Startup and overhead 8 min · Query gradients 7 min · Training-set probabilities 6 min · Training replay 85 s · Checkpoint saves 43 s · Eigendecomposition 13 s · Gram inversion 11 s</td><td class=num>11.3</td></tr><tr><td>Projected gradient cosine similarity</td><td class=num>0.132</td><td class=num>52 s</td><td>Startup and overhead</td><td>Startup and overhead 30 s · Training gradients and scoring 22 s</td><td class=num>2.2</td></tr><tr><td>KFAC (projection 64)</td><td class=num>0.244</td><td class=num>3 min</td><td>Covariance fit</td><td>Covariance fit 2 min · Startup and overhead 53 s · Training gradients and scoring 18 s · Eigendecomposition 12 s · Query preconditioning 2 s</td><td class=num>2.5</td></tr></tbody></table></div>
+<!-- /speed-tables:stages -->
+  <p>The dominant stage changes with scale, so the figures below vary one quantity at a time around the leaderboard's setting, with synthetic 511-token documents past WikiText's 4,608. Lines are the fitted cost model and points the estimates it was fitted to.</p>
+  <figure id="share">
+    <div class="share-controls">
+      <label for="share-queries">Number of queries <output id="share-q">50</output></label>
+      <input type="range" id="share-queries" min="0" max="3" step="0.01" value="1.69897" aria-describedby="share-caption">
+    </div>
+    <div class="share-legend" id="share-legend"></div>
+    <div class="share-grid" id="share-grid"></div>
+    <div class="share-tip" id="share-tip" role="tooltip" hidden></div>
+    <noscript><img src="figures/speed_share.png" alt="Small multiples of each method's stage shares of total time, stacked to 100%, against dataset size, at 50 queries"></noscript>
+    <figcaption id="share-caption">Each stage's share of the time as the dataset grows. Drag the slider to change the number of queries, and hover a panel for the shares and times at one dataset size. Fixed costs such as startup and eigendecomposition fade as per-document stages take over, and per-query stages grow with the slider.</figcaption>
+  </figure>
+<!-- speed-tables:share -->
+  <script type="application/json" id="share-data">{"groups": [["Startup and overhead", "#b9b7ae"], ["Model training", "#2a78d6"], ["Covariance fit", "#eb6834"], ["Eigenvalue correction", "#1baf7a"], ["Eigendecomposition and inversion", "#6250d6"], ["Query gradients", "#e87ba4"], ["Per-query computation", "#008300"], ["Trainer-state copies and I/O", "#e34948"], ["Training gradients and scoring", "#eda100"]], "sizes": [1152, 1179648], "methods": [{"key": "magic", "label": "MAGIC", "family": "Metadifferentiation", "color": "#2a78d6", "lds": 0.931, "terms": {"Per-query computation": [0.0, 0.0002850961035400378, 0.0, 0.09416075110404488], "Query gradients": [1.0474999359133272, 0.0, 0.1430804033086901, 0.0], "Startup and overhead": [24.43962160206342, 0.0, 0.7274639656815638, 5.570628953827079e-09], "Trainer-state copies and I/O": [0.0, 0.00024165323297461766, 0.0, 0.030019264694626045]}}, {"key": "unrolled_gauss_newton", "label": "Unrolled Gauss-Newton", "family": "Metadifferentiation", "color": "#2a78d6", "lds": 0.8185, "terms": {"Per-query computation": [0.0, 0.20579173641528958, 0.0, 0.016270067332433552], "Query gradients": [1.9266077480696224, 0.0, 0.1380209854584649, 0.0], "Startup and overhead": [26.791244292745013, 3.2023599057372964e-07, 0.0001145554220086651, 7.408713283835136e-09], "Trainer-state copies and I/O": [0.0, 0.017940277377650814, 0.0, 0.0003715423669037997]}}, {"key": "ekfac_cg", "label": "EKFAC + CG", "family": "Influence function", "color": "#eb6834", "lds": 0.685, "terms": {"Eigendecomposition and inversion": [12.928941419705996, 3.7352848527836746e-06, 2.2109985725129554e-05, 0.0], "Per-query computation": [36.03801298715393, 2.3055382191832615e-06, 5.801033609083214, 0.0], "Covariance fit": [0.0, 0.02440847152748453, 0.0, 0.0], "Eigenvalue correction": [0.0, 0.03368056881286088, 0.0, 0.0], "Query gradients": [1.2214499457899404, 0.0, 2.6017740558541487, 2.410479312461116e-08], "Startup and overhead": [67.91546492062275, 1.0219636202137749e-06, 0.0030356565806310422, 1.4197691875295017e-08], "Training gradients and scoring": [7.08289134656159, 0.0029195862532590162, 0.31920242046429265, 7.736726734162927e-05]}}, {"key": "ekfac_astra", "label": "EKFAC + ASTRA", "family": "Influence function", "color": "#eb6834", "lds": 0.605, "terms": {"Eigendecomposition and inversion": [13.017700466927819, 5.601589762596598e-06, 0.0, 0.0], "Per-query computation": [68.04954356566543, 2.2275786194809005e-05, 10.44242458432148, 0.0], "Covariance fit": [0.0, 0.024469594009200405, 0.0, 0.0], "Eigenvalue correction": [0.0, 0.033764184582567476, 0.0, 0.0], "Query gradients": [1.2213972705351699, 0.0, 2.6015871322516784, 2.4081767376178792e-08], "Startup and overhead": [67.91546492062221, 1.0219636202262835e-06, 0.0030356565806313966, 1.4197691875290974e-08], "Training gradients and scoring": [7.065999550343095, 0.00291359359714695, 0.31931057033027577, 7.725950736241755e-05]}}, {"key": "shampoo_astra", "label": "Eigenvalue-corrected Shampoo + ASTRA", "family": "Influence function", "color": "#eb6834", "lds": 0.625, "terms": {"Eigendecomposition and inversion": [12.595815691926473, 1.909948199537844e-05, 3.1924287558404544e-06, 0.0], "Per-query computation": [68.12828335676437, 2.226477268416722e-05, 10.454969173568927, 0.0], "Covariance fit": [1.276784113028768e-13, 0.016961899735923495, 0.0, 0.0], "Eigenvalue correction": [0.0, 0.03368056881286088, 0.0, 0.0], "Query gradients": [1.2214499457899404, 0.0, 2.6017740558541487, 2.410479312461116e-08], "Startup and overhead": [67.91309328650891, 1.0219679264780625e-06, 0.003035662990242097, 1.4197716006533168e-08], "Training gradients and scoring": [7.08289134656159, 0.0029195862532590162, 0.31920242046429265, 7.736726734162927e-05]}}, {"key": "lissa", "label": "LiSSA (underestimated)", "family": "Influence function", "color": "#eb6834", "lds": 0.572, "terms": {"Query gradients": [0.22712964215000178, 0.0, 0.7063728994980185, 2.660183102154843e-08], "Per-query computation": [2855.3679449797764, 0.0010276191646462671, 409.7103788445674, 1.5756703322141503e-05], "Startup and overhead": [44.425900651380395, 1.0922494265450825e-06, 0.0031407200719925188, 1.4599763900954542e-08], "Training gradients and scoring": [7.066285592338311, 0.002913797788365697, 0.31930937483657706, 7.726338025288301e-05]}}, {"key": "shampoo", "label": "Eigenvalue-corrected Shampoo", "family": "Influence function", "color": "#eb6834", "lds": 0.517, "terms": {"Eigendecomposition and inversion": [12.595112795212216, 1.9100889190926602e-05, 3.7155290938322605e-06, 0.0], "Covariance fit": [1.276784113028768e-13, 0.016961899735923495, 0.0, 0.0], "Eigenvalue correction": [0.0, 0.03368056881286088, 0.0, 0.0], "Query gradients": [1.2214499457899404, 0.0, 2.6017740558541487, 2.410479312461116e-08], "Startup and overhead": [55.65952244672374, 1.0491679481044953e-06, 0.003076205315829072, 1.4350745735389126e-08], "Training gradients and scoring": [7.08289134656159, 0.0029195862532590162, 0.31920242046429265, 7.736726734162927e-05]}}, {"key": "source_adam", "label": "SOURCE (Adam)", "family": "Influence function", "color": "#eb6834", "lds": 0.473, "terms": {"Sum sharded dirs": [0.9300180690384693, 0.0, 0.0, 0.0], "Training gradients and scoring": [25.21172350298976, 0.025418638127833532, 1.9025652867532308, 0.0001977637873680471], "Eigendecomposition and inversion": [20.326667098428924, 1.518856852650724e-05, 5.227137333102561e-06, 0.0], "Covariance fit": [0.0, 0.14645082916490723, 0.0, 0.0], "Query gradients": [0.2271841647165651, 0.0, 0.706372260388124, 2.6600067739910796e-08], "Apply eigfn to query": [4.977271615882348, 0.0, 9.461473023590573, 0.0], "Aggregate segment covariances": [30.417779433407116, 3.36821588529704e-06, 4.39367651102627e-05, 0.0], "Startup and overhead": [348.4343410705099, 4.0777396958614087e-07, 0.5560172323839601, 0.0], "Trainer-state copies and I/O": [0.0, 0.0, 0.0, 0.0], "Model training": [18.99820951309534, 0.018780632941143176, 9.997421517288763e-05, 0.0], "Checkpoint averaged lambda": [15.764224143582123, 0.20208341287716738, 3.4370499297219235e-15, 0.0]}}, {"key": "ekfac", "label": "EKFAC", "family": "Influence function", "color": "#eb6834", "lds": 0.454, "terms": {"Eigendecomposition and inversion": [12.928941419705996, 3.7352848527836746e-06, 2.2109985725129554e-05, 0.0], "Covariance fit": [0.0, 0.02440847152748453, 0.0, 0.0], "Eigenvalue correction": [0.0, 0.03368056881286088, 0.0, 0.0], "Query gradients": [1.2214499457899404, 0.0, 2.6017740558541487, 2.410479312461116e-08], "Startup and overhead": [55.66189714183101, 1.0491615055986285e-06, 0.0030761956995437427, 1.435070934370077e-08], "Training gradients and scoring": [7.08289134656159, 0.0029195862532590162, 0.31920242046429265, 7.736726734162927e-05]}}, {"key": "kfac", "label": "KFAC", "family": "Influence function", "color": "#eb6834", "lds": 0.42, "terms": {"Eigendecomposition and inversion": [11.561628463200528, 1.238497830671395e-06, 2.5208957128855894e-05, 0.0], "Covariance fit": [0.0, 0.02440847152748453, 0.0, 0.0], "Query gradients": [1.2214499457899404, 0.0, 2.6017740558541487, 2.410479312461116e-08], "Startup and overhead": [55.66189714183012, 1.049161505613591e-06, 0.0030761956995454813, 1.4350709343640963e-08], "Training gradients and scoring": [7.08289134656159, 0.0029195862532590162, 0.31920242046429265, 7.736726734162927e-05]}}, {"key": "trackstar_p64", "label": "TrackStar (no optimizer)", "family": "Projected influence function", "color": "#1baf7a", "lds": 0.276, "terms": {"Eigendecomposition and inversion": [175.11271106646228, 5.790674345529929e-21, 5.404166268044883e-17, 0.0], "Covariance fit": [8.124717063891076, 1.0257536196090448e-05, 0.00195371257226682, 5.106322989121913e-07], "Query gradients": [67.48943092682745, 6.769973546503571e-09, 0.006080152084039205, 0.0], "Startup and overhead": [63.13501242299866, 0.0, 0.00021384479211964048, 0.0], "Training gradients and scoring": [67.45020520652274, 0.004227682807527614, 0.003355118981150189, 7.263450687053328e-08]}}, {"key": "trackstar_adam_p64", "label": "TrackStar (Adam)", "family": "Projected influence function", "color": "#1baf7a", "lds": 0.242, "terms": {"Eigendecomposition and inversion": [178.6737534245464, 0.0, 0.0, 0.0], "Covariance fit": [9.698014383149593, 1.2243662108407666e-05, 0.0023319692604392966, 6.095055722723878e-07], "Query gradients": [68.64866272287556, 7.331428695161282e-09, 0.0068878434158556, 0.0], "Startup and overhead": [66.93031626287778, 0.0, 0.000213844792120746, 0.0], "Training gradients and scoring": [68.60379123399576, 0.005031626168128955, 0.00335513316016251, 7.26346570752527e-08]}}, {"key": "gradient_cosine", "label": "Gradient cosine similarity", "family": "Gradient", "color": "#eda100", "lds": 0.156, "terms": {"Query gradients": [0.3144710897554937, 0.0, 0.7443044346690408, 5.983267816902814e-08], "Startup and overhead": [30.14380395763282, 5.1045364034159656e-08, 0.09266658502126969, 1.4931058307894763e-09], "Training gradients and scoring": [4.251581125565271, 0.004449367070843293, 0.3169247437409633, 4.781751034554886e-05]}}, {"key": "gradient_dot", "label": "Gradient dot product", "family": "Gradient", "color": "#eda100", "lds": 0.156, "terms": {"Query gradients": [0.2271841647165651, 0.0, 0.706372260388124, 2.6600067739910796e-08], "Startup and overhead": [30.14380395763282, 5.1045364034159656e-08, 0.09266658502126969, 1.4931058307894763e-09], "Training gradients and scoring": [4.201953917164965, 0.004236439687972256, 0.31709421445887187, 3.296063122800783e-05]}}, {"key": "trak", "label": "TRAK (8-model ensemble)", "family": "Projected influence function", "color": "#1baf7a", "lds": 0.138, "terms": {"Training gradients and scoring": [9.723054572811181, 6.663528462799129, 0.0, 0.0], "Eigendecomposition and inversion": [23.646322142087463, 1.5864265361595983e-21, 2.5880372007856705e-18, 5.614033109163632e-23], "Covariance fit": [0.0, 6.584950437721627, 0.0, 0.0], "Query gradients": [91.96817260517552, 3.074130513512149e-05, 6.4371022167334875, 0.0], "Startup and overhead": [502.4064002508889, 2.006787035950145e-09, 1.4892129750226675e-08, 0.0], "Trainer-state copies and I/O": [0.0, 0.0, 0.0, 0.0], "Model training": [16.079814157804314, 0.020956631046636406, 0.0, 3.7417469054307866e-09]}}, {"key": "gradient_cosine_projected", "label": "Projected gradient cosine similarity", "family": "Gradient", "color": "#eda100", "lds": 0.132, "terms": {"Query gradients": [0.06540653357972817, 4.272506014314279e-09, 0.0047496373746753326, 0.0], "Startup and overhead": [29.820429900032387, 0.0, 0.00033073759553832287, 0.0], "Training gradients and scoring": [0.029177588420997696, 0.003906166928479104, 0.0033617924617747076, 1.4689585852414722e-05]}}, {"key": "kfac_p64", "label": "KFAC (projection 64)", "family": "Influence function", "color": "#eb6834", "lds": 0.244, "terms": {"Eigendecomposition and inversion": [11.561628463200528, 1.238497830671395e-06, 2.5208957128855894e-05, 0.0], "Covariance fit": [0.0, 0.02440847152748453, 0.0, 0.0], "Query gradients": [0.9562526428160066, 0.0, 0.02147714422277565, 1.2098313208059703e-09], "Startup and overhead": [53.3389955811734, 0.0, 1.0644728824707372e-15, 0.0], "Training gradients and scoring": [0.0, 0.0023218337945621922, 0.007592670573417354, 4.574575912618639e-05]}}], "nodes": {"anchors": [4608, 73728], "counts": [1, 2, 4, 8], "ratios": {"ekfac": {"1": {"Eigendecomposition and inversion": [0.11859408810657487, 0.12214195780062276], "Covariance fit": [0.44422518667131533, 0.44422518667134875], "Eigenvalue correction": [0.5735821380877612, 0.5735821380877789], "Query gradients": [0.18813945859277906, 0.1880201793343434], "Startup and overhead": [1.387489987341469, 1.3844615786131274], "Training gradients and scoring": [0.5441045662885894, 0.7919113189728604]}, "2": {"Eigendecomposition and inversion": [0.07940088101215863, 0.09139739056911086], "Covariance fit": [0.44709132029899007, 0.4470913202990278], "Eigenvalue correction": [0.5045602041776581, 0.504560204177655], "Query gradients": [0.19693614727035133, 0.19681129096545238], "Startup and overhead": [1.8405801010009228, 1.8365627256495463], "Training gradients and scoring": [0.3078511781673591, 0.399670391571662]}, "4": {"Eigendecomposition and inversion": [0.14339533584285064, 0.1747819788729792], "Covariance fit": [0.37322534316537664, 0.37322534316539], "Eigenvalue correction": [0.42510341379942124, 0.4251034137994351], "Query gradients": [0.2621510127436862, 0.26198481061558343], "Startup and overhead": [1.8736194217907203, 1.8695299310156615], "Training gradients and scoring": [0.18972508230013918, 0.2035500675320649]}, "8": {"Eigendecomposition and inversion": [0.8487119697239783, 0.9025777080178705], "Covariance fit": [0.3539639236596797, 0.35396392365967494], "Eigenvalue correction": [0.4158801636827397, 0.41588016368274433], "Query gradients": [0.43342976715649484, 0.4331549753526008], "Startup and overhead": [1.883044961577445, 1.8789348975345699], "Training gradients and scoring": [0.1306623604664522, 0.10549005490778995]}}, "ekfac_astra": {"1": {"Eigendecomposition and inversion": [0.11771893321861553, 0.12009345773942665], "Per-query computation": [1.2587187463778615, 1.2554439757964435], "Covariance fit": [0.4431155587044664, 0.4431155587044997], "Eigenvalue correction": [0.5721616828758521, 0.5721616828758699], "Query gradients": [0.1881529331453003, 0.18803375068998945], "Startup and overhead": [1.395753627116745, 1.3933036748741214], "Training gradients and scoring": [0.5447456266337957, 0.7932000594862394]}}, "ekfac_cg": {"1": {"Eigendecomposition and inversion": [0.11859408810657487, 0.12214195780062276], "Per-query computation": [1.0894721702757404, 1.0889400267341502], "Covariance fit": [0.44422518667131533, 0.44422518667134875], "Eigenvalue correction": [0.5735821380877612, 0.5735821380877789], "Query gradients": [0.18813945859277906, 0.1880201793343434], "Startup and overhead": [1.395753627116734, 1.3933036748741294], "Training gradients and scoring": [0.5441045662885894, 0.7919113189728604]}}, "gradient_cosine": {"1": {"Query gradients": [0.11851961981942767, 0.11787041388808449], "Startup and overhead": [1.2499011922086245, 1.2495891497548401], "Training gradients and scoring": [0.7047027521216206, 0.9985648522474985]}, "2": {"Query gradients": [0.06004604207538278, 0.059717132425415854], "Startup and overhead": [1.6153116932532017, 1.6149083840046485], "Training gradients and scoring": [0.3900257606682728, 0.5029907103050575]}, "4": {"Query gradients": [0.030055598369454165, 0.029890965098091617], "Startup and overhead": [1.6423920118946678, 1.6419819389272925], "Training gradients and scoring": [0.2326878944741051, 0.25520377875242034]}, "8": {"Query gradients": [0.015238698920618734, 0.015155227055451673], "Startup and overhead": [1.6502066228321188, 1.6497945980475663], "Training gradients and scoring": [0.15401930456118784, 0.13131046211230976]}}, "gradient_cosine_projected": {"1": {"Query gradients": [1.4393121460440046, 1.4379102773818957], "Startup and overhead": [1.4235559455581657, 1.4235559455581657], "Training gradients and scoring": [1.7802474454909316, 1.7934210115558864]}, "2": {"Query gradients": [0.8388178482166516, 0.8380008520856423], "Startup and overhead": [1.8494752898630935, 1.8494752898630935], "Training gradients and scoring": [0.8912956205363335, 0.8967844328476413]}, "4": {"Query gradients": [0.4300177522898341, 0.4295989213831801], "Startup and overhead": [1.8810398768860996, 1.8810398768860996], "Training gradients and scoring": [0.4468212137558337, 0.4484663570606723]}, "8": {"Query gradients": [0.25129044195418976, 0.2510456887944035], "Startup and overhead": [1.8901485203349402, 1.8901485203349402], "Training gradients and scoring": [0.224584831183097, 0.22430754762033667]}}, "gradient_dot": {"1": {"Query gradients": [0.12515886737586657, 0.12483606745151397], "Startup and overhead": [1.2499011922086245, 1.2495891497548401], "Training gradients and scoring": [0.6265706811538687, 0.9133358609314292]}, "2": {"Query gradients": [0.06340970910601844, 0.06324616776266981], "Startup and overhead": [1.6153116932532015, 1.6149083840046476], "Training gradients and scoring": [0.354510023163517, 0.4609522460777144]}, "4": {"Query gradients": [0.03173925680405755, 0.03165739740479829], "Startup and overhead": [1.6423920118946678, 1.6419819389272925], "Training gradients and scoring": [0.21848038302571585, 0.23476059972621802]}, "8": {"Query gradients": [0.016092342345802643, 0.01605083823985479], "Startup and overhead": [1.6502066228321186, 1.6497945980475663], "Training gradients and scoring": [0.1504659384814176, 0.1216649488529561]}}, "kfac": {"1": {"Eigendecomposition and inversion": [0.11974828252444361, 0.11997658164573725], "Covariance fit": [0.44422518667131533, 0.44422518667134875], "Query gradients": [0.18813945859277906, 0.1880201793343434], "Startup and overhead": [1.3874899873414879, 1.3844615786131254], "Training gradients and scoring": [0.5441045662885894, 0.7919113189728604]}, "2": {"Eigendecomposition and inversion": [0.07548280500342144, 0.07603625253403176], "Covariance fit": [0.44709132029899007, 0.4470913202990278], "Query gradients": [0.19693614727035133, 0.19681129096545238], "Startup and overhead": [1.8405801010009482, 1.8365627256495356], "Training gradients and scoring": [0.3078511781673591, 0.399670391571662]}, "4": {"Eigendecomposition and inversion": [0.1463831061218583, 0.16109961223503055], "Covariance fit": [0.37322534316537664, 0.37322534316539], "Query gradients": [0.2621510127436862, 0.26198481061558343], "Startup and overhead": [1.873619421790745, 1.8695299310156588], "Training gradients and scoring": [0.18972508230013918, 0.2035500675320649]}, "8": {"Eigendecomposition and inversion": [0.9341636191811454, 0.9664636626368853], "Covariance fit": [0.3539639236596797, 0.35396392365967494], "Query gradients": [0.43342976715649484, 0.4331549753526008], "Startup and overhead": [1.8830449615774707, 1.8789348975345692], "Training gradients and scoring": [0.1306623604664522, 0.10549005490778995]}}, "kfac_p64": {"1": {"Eigendecomposition and inversion": [0.11974828252444361, 0.11997658164573725], "Covariance fit": [0.44422518667131533, 0.44422518667134875], "Query gradients": [0.7926838277335683, 0.7910548094206531], "Startup and overhead": [1.4440059919638808, 1.4440059919638808], "Training gradients and scoring": [1.4617989081795868, 1.4840396663860194]}, "2": {"Eigendecomposition and inversion": [0.07548280500342144, 0.07603625253403176], "Covariance fit": [0.44709132029899007, 0.4470913202990278], "Query gradients": [0.7007886469553217, 0.6993484793885918], "Startup and overhead": [1.9195070402655472, 1.9195070402655514], "Training gradients and scoring": [0.7320693406725878, 0.7420942256997095]}, "4": {"Eigendecomposition and inversion": [0.1463831061218583, 0.16109961223503055], "Covariance fit": [0.37322534316537664, 0.37322534316539], "Query gradients": [0.6386463410025426, 0.6373338800331496], "Startup and overhead": [1.9547371634924287, 1.9547371634924287], "Training gradients and scoring": [0.36720606003182577, 0.3711217202684323]}, "8": {"Eigendecomposition and inversion": [0.9341636191811454, 0.9664636626368853], "Covariance fit": [0.3539639236596797, 0.35396392365967494], "Query gradients": [0.6114052331332576, 0.6101487544635287], "Startup and overhead": [1.9649276175507016, 1.9649276175507016], "Training gradients and scoring": [0.18477523912027105, 0.18563569744426017]}}, "lissa": {"1": {"Query gradients": [0.12516034126255396, 0.12483751599313929], "Per-query computation": [2.068648783412046, 2.0575908214910172], "Startup and overhead": [1.3561782031027134, 1.3523584284852463], "Training gradients and scoring": [0.545289727892588, 0.7940932802727756]}}, "magic": {"1": {"Per-query computation": [0.6561814416081903, 0.6774257621403399], "Query gradients": [0.5621067685728361, 0.5621067685728361], "Startup and overhead": [0.6907993052599991, 0.690583265174527], "Trainer-state copies and I/O": [0.029744459312886593, 0.02129143886581135]}, "2": {"Per-query computation": [0.36507615549628997, 0.3771991391981965], "Query gradients": [0.5853109851778204, 0.5853109851778204], "Startup and overhead": [0.787699316853626, 0.7876210764942644], "Trainer-state copies and I/O": [0.029744459312886593, 0.02129143886581135]}, "4": {"Per-query computation": [0.23599145216426062, 0.24439083180951157], "Query gradients": [0.8046586300148606, 0.8046586300148606], "Startup and overhead": [0.7909364886526552, 0.7906740110593422], "Trainer-state copies and I/O": [0.029744459312886593, 0.02129143886581135]}, "8": {"Per-query computation": [0.19043288006112216, 0.19670282842959147], "Query gradients": [0.8534022302246844, 0.8534022302246844], "Startup and overhead": [0.7945913574222542, 0.7929193344466742], "Trainer-state copies and I/O": [0.029744459312886593, 0.02129143886581135]}}, "shampoo": {"1": {"Eigendecomposition and inversion": [0.1576537133052132, 0.17901270986993514], "Covariance fit": [0.46124464268722515, 0.4612446426872772], "Eigenvalue correction": [0.5735821380877612, 0.5735821380877789], "Query gradients": [0.18813945859277906, 0.1880201793343434], "Startup and overhead": [1.3875489995014403, 1.3845203193057332], "Training gradients and scoring": [0.5441045662885894, 0.7919113189728604]}, "2": {"Eigendecomposition and inversion": [0.13465745532815881, 0.21499740269214657], "Covariance fit": [0.3137395340641307, 0.3137395340641668], "Eigenvalue correction": [0.5045602041776581, 0.504560204177655], "Query gradients": [0.19693614727035133, 0.19681129096545238], "Startup and overhead": [1.8406297561127962, 1.8366120831331896], "Training gradients and scoring": [0.3078511781673591, 0.399670391571662]}, "4": {"Eigendecomposition and inversion": [0.1477013391544943, 0.286437691907951], "Covariance fit": [0.5545804984379535, 0.5545804984379734], "Eigenvalue correction": [0.42510341379942124, 0.4251034137994351], "Query gradients": [0.2621510127436862, 0.26198481061558343], "Startup and overhead": [1.873699109810131, 1.869609252453462], "Training gradients and scoring": [0.18972508230013918, 0.2035500675320649]}, "8": {"Eigendecomposition and inversion": [0.1567614974885542, 0.41095099058473017], "Covariance fit": [0.16184135824866816, 0.16184135824866977], "Eigenvalue correction": [0.4158801636827397, 0.41588016368274433], "Query gradients": [0.43342976715649484, 0.4331549753526008], "Startup and overhead": [1.8831250504800814, 1.8790146180114304], "Training gradients and scoring": [0.1306623604664522, 0.10549005490778995]}}, "shampoo_astra": {"1": {"Eigendecomposition and inversion": [0.1576453824413315, 0.17900538540490485], "Per-query computation": [1.2572152202880054, 1.2539498692822977], "Covariance fit": [0.46124464268722515, 0.4612446426872772], "Eigenvalue correction": [0.5735821380877612, 0.5735821380877789], "Query gradients": [0.18813945859277906, 0.1880201793343434], "Startup and overhead": [1.395802247584613, 1.3933521170145673], "Training gradients and scoring": [0.5441045662885894, 0.7919113189728604]}}, "source_adam": {"1": {"Sum sharded dirs": [0.15366434127763057, 0.15366434127763057], "Training gradients and scoring": [0.6265706811538687, 0.9133358609314293], "Eigendecomposition and inversion": [0.0847811502154852, 0.09817606813142551], "Covariance fit": [0.4442251866713152, 0.44422518667134864], "Query gradients": [0.12515886737586657, 0.12483606745151397], "Apply eigfn to query": [0.21012441652748104, 0.21012441652748104], "Aggregate segment covariances": [0.15504346912659772, 0.16144469011610524], "Startup and overhead": [1.3517347419106474, 1.3516338120574878], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.5457707222729675, 0.6423317874544434], "Checkpoint averaged lambda": [0.5643323536414561, 0.5729948611244291]}, "2": {"Sum sharded dirs": [0.09199028452854163, 0.09199028452854163], "Training gradients and scoring": [0.35451002316351704, 0.46095224607771434], "Eigendecomposition and inversion": [0.06843171726981682, 0.11100859523656209], "Covariance fit": [0.44709132029899, 0.4470913202990277], "Query gradients": [0.06340970910601844, 0.06324616776266981], "Apply eigfn to query": [0.24516717791667011, 0.24516717791667011], "Aggregate segment covariances": [0.11721258048345651, 0.12390098556186696], "Startup and overhead": [1.8380374436006888, 1.837900085709614], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.31868427180260245, 0.3691298335729706], "Checkpoint averaged lambda": [0.4963355447018754, 0.5040380133017962]}, "4": {"Sum sharded dirs": [0.06304161794571418, 0.06304161794571418], "Training gradients and scoring": [0.2184803830257159, 0.23476059972621802], "Eigendecomposition and inversion": [0.06015405090612736, 0.13151777015968152], "Covariance fit": [0.37322534316537653, 0.3732253431653899], "Query gradients": [0.03173925680405755, 0.03165739740479829], "Apply eigfn to query": [0.34651288443370126, 0.34651288443370126], "Aggregate segment covariances": [0.12501918949754617, 0.13164833258192082], "Startup and overhead": [1.8732658793131345, 1.8731258825249586], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.2274623789366403, 0.25938308595273085], "Checkpoint averaged lambda": [0.41814076322601806, 0.42466134898058994]}, "8": {"Sum sharded dirs": [0.05706987498721638, 0.05706987498721638], "Training gradients and scoring": [0.15046593848141754, 0.12166494885295609], "Eigendecomposition and inversion": [0.06115720801460373, 0.19026716893633283], "Covariance fit": [0.35396392365967966, 0.35396392365967483], "Query gradients": [0.016092342345802643, 0.01605083823985479], "Apply eigfn to query": [0.5875678817788916, 0.5875678817788916], "Aggregate segment covariances": [0.11030034663637797, 0.11704122427493316], "Startup and overhead": [1.883422966587458, 1.8832822089506207], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.17709446942394355, 0.19878673040931746], "Checkpoint averaged lambda": [0.4090585722543202, 0.41544705483328426]}}, "trackstar_adam_p64": {"1": {"Eigendecomposition and inversion": [0.1367561089706823, 0.1367561089706823], "Covariance fit": [3.6318757122125156, 6.047604365202155], "Query gradients": [0.08678354837853182, 0.08678291096545312], "Startup and overhead": [1.202596829932228, 1.202596829932228], "Training gradients and scoring": [0.5159834531664044, 1.5386333127856369]}, "2": {"Eigendecomposition and inversion": [0.13469762551683773, 0.13469762551683773], "Covariance fit": [1.8192842909914213, 3.02638643137291], "Query gradients": [0.08342612789774063, 0.08342551514444786], "Startup and overhead": [1.5822786307055994, 1.582278630705599], "Training gradients and scoring": [0.2878183840666841, 0.7755512606764143]}, "4": {"Eigendecomposition and inversion": [0.13344303747749015, 0.13344303747749015], "Covariance fit": [0.9096580880791794, 1.5152049801439298], "Query gradients": [0.08115109029389975, 0.0811504942504414], "Startup and overhead": [1.6104165854658379, 1.6104165854658379], "Training gradients and scoring": [0.1737362028230456, 0.39401040078420074]}, "8": {"Eigendecomposition and inversion": [0.13258715226596826, 0.13258715226596826], "Covariance fit": [0.4553392067104421, 0.7601990503344284], "Query gradients": [0.08012649160815499, 0.0801259030902313], "Startup and overhead": [1.6185364001525886, 1.6185364001525886], "Training gradients and scoring": [0.11669530480303958, 0.2032401485820376]}}, "trackstar_p64": {"1": {"Eigendecomposition and inversion": [0.13892342237630376, 0.13892342237630376], "Covariance fit": [3.80263326573768, 6.331992115492065], "Query gradients": [0.08636908220054283, 0.08636848604697693], "Startup and overhead": [1.2529299466343522, 1.2529299466343518], "Training gradients and scoring": [0.4931921549532926, 1.5973541086605672]}, "2": {"Eigendecomposition and inversion": [0.13693167601493372, 0.13693167601493372], "Covariance fit": [1.9048543663056214, 3.1687280272726777], "Query gradients": [0.0832871059723171, 0.0832865310917701], "Startup and overhead": [1.6554321087309023, 1.6554321087309023], "Training gradients and scoring": [0.2776306106836118, 0.8057996279378458]}, "4": {"Eigendecomposition and inversion": [0.13571777973429824, 0.13571777973429824], "Covariance fit": [0.9524462129002443, 1.586412643354394], "Query gradients": [0.08119460781531723, 0.08119404737802013], "Startup and overhead": [1.6852612646317175, 1.6852612646317175], "Training gradients and scoring": [0.1698502115576905, 0.41002258019031335]}, "8": {"Eigendecomposition and inversion": [0.1348605049268194, 0.1348605049268194], "Covariance fit": [0.4768320583680451, 0.7959529866834999], "Query gradients": [0.08026306712911158, 0.08026251312167675], "Startup and overhead": [1.693869111941184, 1.6938691119411835], "Training gradients and scoring": [0.11596021533729736, 0.21213426235587482]}}, "trak": {"1": {"Training gradients and scoring": [0.617278404402947, 0.6174320042070317], "Eigendecomposition and inversion": [0.12565583240296171, 0.12565583240296171], "Covariance fit": [0.6204088035081027, 0.6204088035081295], "Query gradients": [0.5548618552845361, 0.5520283511298276], "Startup and overhead": [1.4228063208669421, 1.422806114418702], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.5243226405097644, 0.5818658160560148]}, "2": {"Training gradients and scoring": [0.31081982763548566, 0.31088244618712685], "Eigendecomposition and inversion": [0.12566534428285758, 0.12566534428285758], "Covariance fit": [0.31020440175404984, 0.3102044017540638], "Query gradients": [0.3179899402558645, 0.3163660661180244], "Startup and overhead": [1.7389878534281125, 1.738987559685287], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.31155793871506937, 0.3362297489224286]}, "4": {"Training gradients and scoring": [0.15759054771529768, 0.15760766836770498], "Eigendecomposition and inversion": [0.12568109389598645, 0.12568109389598645], "Covariance fit": [0.15510220087702561, 0.15510220087703103], "Query gradients": [0.16007618225324352, 0.1592587237756701], "Startup and overhead": [1.7624197947043256, 1.7624194944921898], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.2260891721172718, 0.23755637165283072]}, "8": {"Training gradients and scoring": [0.08097591236903134, 0.08097028073150622], "Eigendecomposition and inversion": [0.12569496180784692, 0.12569496180784692], "Covariance fit": [0.07755110043851271, 0.07755110043851461], "Query gradients": [0.08128971172066204, 0.08087459085102243], "Startup and overhead": [1.7691816073636761, 1.7691813052847298], "Trainer-state copies and I/O": [1.0, 1.0], "Model training": [0.17889783496221942, 0.1830741461531911]}}, "unrolled_gauss_newton": {"1": {"Per-query computation": [0.43555434174068786, 0.43946137457340234], "Query gradients": [0.49779661724637125, 0.49779661724637125], "Startup and overhead": [0.9671728879519742, 0.9654568039093755], "Trainer-state copies and I/O": [0.04891096621376072, 0.035011053186530014]}, "2": {"Per-query computation": [0.1935226309673671, 0.19463348274852563], "Query gradients": [0.5195243714671318, 0.5195243714671318], "Startup and overhead": [1.2041275277220767, 1.2019900164412687], "Trainer-state copies and I/O": [0.02445548310688036, 0.017505526593265007]}, "4": {"Per-query computation": [0.13852477710223757, 0.1392916278326266], "Query gradients": [0.7229573945770966, 0.7229573945770966], "Startup and overhead": [1.2216880995020192, 1.2195193183729627], "Trainer-state copies and I/O": [0.02445548310688036, 0.017505526593265007]}, "8": {"Per-query computation": [0.12345143245432794, 0.12402155802661512], "Query gradients": [0.7679000456916576, 0.7679000456916576], "Startup and overhead": [1.2267526656184162, 1.2245748491642452], "Trainer-state copies and I/O": [0.02445548310688036, 0.017505526593265007]}}}}, "single_node": ["ekfac_astra", "ekfac_cg", "lissa", "shampoo_astra"]}</script>
+<!-- /speed-tables:share -->
+  <script>
+  (() => {
+    const data = JSON.parse(document.getElementById("share-data").textContent);
+    const grid = document.getElementById("share-grid");
+    const tip = document.getElementById("share-tip");
+    const slider = document.getElementById("share-queries");
+    const out = document.getElementById("share-q");
+    const W = 260, H = 150, L = 28, R = 6, T = 6, B = 22;
+    const [lo, hi] = data.sizes.map(Math.log10);
+    const xs = Array.from({length: 80}, (_, i) => 10 ** (lo + (hi - lo) * i / 79));
+    const px = n => L + (Math.log10(n) - lo) / (hi - lo) * (W - L - R);
+    const py = s => T + (1 - s / 100) * (H - T - B);
+    const svgNS = "http://www.w3.org/2000/svg";
+    const el = (tag, attrs, parent) => {
+      const e = document.createElementNS(svgNS, tag);
+      for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+      parent && parent.appendChild(e);
+      return e;
+    };
+    const order = data.groups.map(g => g[0]);
+    const color = Object.fromEntries(data.groups);
+    const used = order.filter(g => data.methods.some(m => g in m.terms));
+    document.getElementById("share-legend").innerHTML = used.map(g =>
+      `<span><i style="background:${color[g]}"></i>${g}</span>`).join("");
+    const secs = (t, n, q) => Math.max(t[0] + t[1] * n + t[2] * q + t[3] * n * q, 0);
+    const fmt = s => s < 90 ? `${s.toFixed(0)} s` : s < 5400 ? `${(s / 60).toFixed(0)} min` : `${(s / 3600).toFixed(1)} h`;
+    const panels = data.methods.map(m => {
+      const div = document.createElement("div");
+      div.className = "share-panel";
+      div.innerHTML = `<div class="share-title">${m.label}</div>`;
+      const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${m.label}: stage shares against dataset size`}, div);
+      const areas = el("g", {}, svg);
+      for (const s of [0, 50, 100]) {
+        el("text", {x: L - 4, y: py(s) + 3, "text-anchor": "end", class: "tick"}, svg).textContent = s;
+      }
+      for (const [n, label] of [[1e4, "10k"], [1e5, "100k"], [1e6, "1M"]]) {
+        el("text", {x: px(n), y: H - 8, "text-anchor": "middle", class: "tick"}, svg).textContent = label;
+      }
+      const cross = el("line", {y1: T, y2: H - B, class: "cross", visibility: "hidden"}, svg);
+      const hit = el("rect", {x: L, y: T, width: W - L - R, height: H - T - B, fill: "transparent"}, svg);
+      grid.appendChild(div);
+      return {m, svg, areas, cross, hit};
+    });
+    let q = 50;
+    function shares(m, n) {
+      const parts = used.filter(g => g in m.terms).map(g => [g, secs(m.terms[g], n, q)]);
+      const total = parts.reduce((a, [, v]) => a + v, 0);
+      return {parts, total};
+    }
+    function draw() {
+      for (const p of panels) {
+        p.areas.replaceChildren();
+        const rows = xs.map(n => shares(p.m, n));
+        const bottom = xs.map(() => 0);
+        rows[0].parts.forEach(([g], k) => {
+          const top = rows.map((r, i) => bottom[i] + 100 * r.parts[k][1] / r.total);
+          const d = xs.map((n, i) => `${i ? "L" : "M"}${px(n).toFixed(1)},${py(top[i]).toFixed(1)}`).join("")
+            + xs.map((n, i) => xs.length - 1 - i).map(i => `L${px(xs[i]).toFixed(1)},${py(bottom[i]).toFixed(1)}`).join("") + "Z";
+          el("path", {d, fill: color[g], class: "band"}, p.areas);
+          top.forEach((v, i) => bottom[i] = v);
+        });
+      }
+    }
+    function hover(p, evt) {
+      const box = p.svg.getBoundingClientRect();
+      const x = (evt.clientX - box.left) / box.width * W;
+      const n = 10 ** (lo + Math.min(Math.max((x - L) / (W - L - R), 0), 1) * (hi - lo));
+      p.cross.setAttribute("x1", px(n));
+      p.cross.setAttribute("x2", px(n));
+      p.cross.setAttribute("visibility", "visible");
+      const {parts, total} = shares(p.m, n);
+      tip.innerHTML = `<b>${p.m.label}</b><br>${Math.round(n).toLocaleString()} documents, ${q.toLocaleString()} ${q === 1 ? "query" : "queries"}: ${fmt(total)}`
+        + parts.filter(([, v]) => v > 0).slice().reverse().map(([g, v]) =>
+          `<div><i style="background:${color[g]}"></i>${g} <span>${(100 * v / total).toFixed(0)}% · ${fmt(v)}</span></div>`).join("");
+      tip.hidden = false;
+      const left = Math.min(evt.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+      tip.style.left = `${left + window.scrollX}px`;
+      tip.style.top = `${evt.clientY + 14 + window.scrollY}px`;
+    }
+    for (const p of panels) {
+      p.hit.addEventListener("pointermove", e => hover(p, e));
+      p.hit.addEventListener("pointerleave", () => { tip.hidden = true; p.cross.setAttribute("visibility", "hidden"); });
+    }
+    slider.addEventListener("input", () => {
+      q = Math.max(1, Math.round(10 ** Number(slider.value)));
+      out.textContent = q.toLocaleString();
+      draw();
+    });
+    draw();
+  })();
+  </script>
+  <script>
+  (() => {
+    const data = JSON.parse(document.getElementById("share-data").textContent);
+    const $ = id => document.getElementById(id);
+    const nodes = data.nodes || {};
+    const counts = nodes.counts || [];
+    const hw = $("calc-hw");
+    if (!counts.length) {
+      hw.querySelector('option[value="gh200"]').disabled = true;
+    }
+    $("calc-nodes").max = Math.max(counts.length - 1, 0);
+    const families = [...new Map(data.methods.map(m => [m.family, m.color])).entries()];
+    $("calc-legend").innerHTML = families.map(([f, c]) =>
+      `<span><i style="background:${c}"></i>${f}</span>`).join("");
+    const secs = (t, n, q) => Math.max(t[0] + t[1] * n + t[2] * q + t[3] * n * q, 0);
+    const fmt = s => s < 90 ? `${s.toFixed(0)} s` : s < 5400 ? `${(s / 60).toFixed(0)} min`
+      : s < 172800 ? `${(s / 3600).toFixed(1)} h` : `${(s / 86400).toFixed(1)} days`;
+    function ratio(m, count, group, n) {
+      const r = ((nodes.ratios || {})[m.key] || {})[count];
+      if (!r || !r[group]) return null;
+      const [a, b] = nodes.anchors;
+      const w = Math.min(Math.max((Math.log(n) - Math.log(a)) / (Math.log(b) - Math.log(a)), 0), 1);
+      return Math.exp((1 - w) * Math.log(r[group][0]) + w * Math.log(r[group][1]));
+    }
+    function times() {
+      const n = Math.round(10 ** Number($("calc-n").value));
+      const q = Math.max(1, Math.round(10 ** Number($("calc-q").value)));
+      const gh = hw.value === "gh200";
+      const count = counts[Number($("calc-nodes").value)];
+      $("calc-n-out").textContent = n.toLocaleString();
+      $("calc-q-out").textContent = q.toLocaleString();
+      $("calc-nodes-out").textContent = gh ? count : 1;
+      $("calc-nodes").disabled = !gh;
+      return data.methods.map(m => {
+        let total = 0, missing = false;
+        const parts = [];
+        for (const [g, t] of Object.entries(m.terms)) {
+          let s = secs(t, n, q);
+          if (gh) {
+            const r = ratio(m, count, g, n);
+            if (r === null) { missing = true; continue; }
+            s *= r;
+          }
+          total += s;
+          parts.push([g, s]);
+        }
+        return {m, total, parts, missing, nodes: gh ? count : 1};
+      });
+    }
+    const chart = $("calc-chart");
+    const tip = $("share-tip");
+    function draw() {
+      const rows = times();
+      const shown = rows.filter(r => !r.missing);
+      // Round times as ticks, spanning every method's time
+      const ticks = [[1, "1 s"], [10, "10 s"], [60, "1 min"], [600, "10 min"], [3600, "1 h"],
+        [36000, "10 h"], [86400, "1 day"], [864000, "10 days"], [8640000, "100 days"],
+        [86400000, "1,000 days"]];
+      const least = Math.min(...shown.map(r => r.total)), most = Math.max(...shown.map(r => r.total));
+      const from = ticks.filter(([s]) => s <= least).pop() || ticks[0];
+      const to = ticks.find(([s]) => s >= most) || ticks[ticks.length - 1];
+      const lo = Math.log10(from[0]), hi = Math.log10(to[0]);
+      const W = 720, L = 260, R = 90, row = 22, T = 6, B = 26, H = T + B + row * rows.length;
+      const x = s => L + (Math.log10(s) - lo) / Math.max(hi - lo, 1e-9) * (W - L - R);
+      let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%">`;
+      for (const [s, label] of ticks.filter(([s]) => s >= from[0] && s <= to[0])) {
+        svg += `<line x1="${x(s)}" x2="${x(s)}" y1="${T}" y2="${H - B}" class="calc-grid"/>`;
+        svg += `<text x="${x(s)}" y="${H - 8}" text-anchor="middle" class="calc-tick">${label}</text>`;
+      }
+      rows.forEach((r, i) => {
+        const y = T + i * row;
+        svg += `<text x="${L - 8}" y="${y + row / 2 + 4}" text-anchor="end" class="calc-label">${r.m.label}</text>`;
+        if (r.missing) {
+          const why = (data.single_node || []).includes(r.m.key) ? "runs on one node only in bergson" : "no estimate on these nodes yet";
+          svg += `<text x="${L + 4}" y="${y + row / 2 + 4}" class="calc-tick">${why}</text>`;
+          return;
+        }
+        const cx = x(r.total), cy = y + row / 2;
+        svg += `<line x1="${L}" x2="${W - R}" y1="${cy}" y2="${cy}" class="calc-guide"/>`;
+        svg += `<g class="calc-row" data-i="${i}"><circle cx="${cx}" cy="${cy}" r="5.5" fill="${r.m.color}" stroke="var(--surface)" stroke-width="2"/>`;
+        svg += `<rect x="0" y="${y}" width="${W}" height="${row}" fill="transparent"/></g>`;
+        svg += `<text x="${cx + 10}" y="${cy + 4}" class="calc-value">${fmt(r.total)}</text>`;
+      });
+      chart.innerHTML = svg + "</svg>";
+      chart.querySelectorAll(".calc-row").forEach(g => {
+        const r = rows[Number(g.dataset.i)];
+        g.addEventListener("pointermove", e => {
+          const nodeHours = r.total / 3600 * r.nodes;
+          tip.innerHTML = `<b>${r.m.label}</b><br>LDS ${r.m.lds.toFixed(3)} · ${fmt(r.total)} · ${nodeHours.toFixed(2)} node-hours`
+            + r.parts.filter(([, v]) => v > 0.5).sort((a, b) => b[1] - a[1]).map(([gname, v]) =>
+              `<div>${gname} <span>${fmt(v)}</span></div>`).join("");
+          tip.hidden = false;
+          const left = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+          tip.style.left = `${left + window.scrollX}px`;
+          tip.style.top = `${e.clientY + 14 + window.scrollY}px`;
+        });
+        g.addEventListener("pointerleave", () => { tip.hidden = true; });
+      });
+    }
+    for (const id of ["calc-n", "calc-q", "calc-hw", "calc-nodes"]) $(id).addEventListener("input", draw);
+    draw();
+  })();
+  </script>
+  <figure>
+    <img src="figures/speed_stages.png"
+         alt="Per-stage hours against dataset size on log axes for EKFAC and MAGIC, with dashed lines where the longest stage changes">
+    <figcaption>Each stage's time against dataset size for EKFAC and MAGIC, at 50 queries. Dashed lines mark the dataset sizes where the longest stage changes.</figcaption>
+  </figure>
+  <figure>
+    <img src="figures/speed_queries.png"
+         alt="Total hours against number of queries on log axes for selected methods, at 4,608 and 294,912 documents">
+    <figcaption>Total time against the number of queries. Methods that fit a Hessian once pay little per query; MAGIC and the ASTRA, CG and LiSSA refinements pay per query.</figcaption>
+  </figure>
+  <figure>
+    <img src="figures/speed_regime.png"
+         alt="Map over dataset size and number of queries shaded by the fastest method with LDS at least EKFAC's, with contours of its hours">
+    <figcaption>The fastest method reaching each LDS floor, at each dataset size and number of queries, with contours of its time in hours: 0.45 is EKFAC's LDS, 0.6 ASTRA's and 0.8 only unrolled Gauss-Newton and MAGIC reach. LiSSA is left out, as its estimate is low.</figcaption>
+  </figure>
+<!-- speed-tables:model -->
+  <div class="table-wrap"><table><caption>The fitted cost model, total time = fixed + per document × dataset size + per query × number of queries + per pair × dataset size × number of queries, summed over stages. The last columns give the dataset size at which per-document time equals the fixed time, the number of queries at which per-query time equals the rest at 4,608 documents, and the model's largest error against the estimates it was fitted to.</caption><thead><tr><th>Method</th><th>Fixed</th><th>Per 1,000 documents</th><th>Per query</th><th>Per million document-query pairs</th><th>Documents where per-document time passes fixed</th><th>Queries where per-query time passes the rest</th><th>Fit error</th></tr></thead><tbody><tr><td>MAGIC</td><td class=num>25 s</td><td class=num>1 s</td><td class=num>1 s</td><td class=num>34.5 h</td><td class=num>48,386</td><td class=num>0</td><td class=num>4%</td></tr><tr><td>Unrolled Gauss-Newton</td><td class=num>29 s</td><td class=num>4 min</td><td class=num>0 s</td><td class=num>4.6 h</td><td class=num>128</td><td class=num>14</td><td class=num>19%</td></tr><tr><td>EKFAC + CG</td><td class=num>2 min</td><td class=num>61 s</td><td class=num>9 s</td><td class=num>77 s</td><td class=num>2,052</td><td class=num>45</td><td class=num>8%</td></tr><tr><td>EKFAC + ASTRA</td><td class=num>3 min</td><td class=num>61 s</td><td class=num>13 s</td><td class=num>77 s</td><td class=num>2,571</td><td class=num>32</td><td class=num>6%</td></tr><tr><td>Eigenvalue-corrected Shampoo + ASTRA</td><td class=num>3 min</td><td class=num>54 s</td><td class=num>13 s</td><td class=num>77 s</td><td class=num>2,928</td><td class=num>29</td><td class=num>6%</td></tr><tr><td>LiSSA (underestimated)</td><td class=num>48 min</td><td class=num>4 s</td><td class=num>7 min</td><td class=num>2 min</td><td class=num>737,370</td><td class=num>7</td><td class=num>4%</td></tr><tr><td>Eigenvalue-corrected Shampoo</td><td class=num>77 s</td><td class=num>54 s</td><td class=num>3 s</td><td class=num>77 s</td><td class=num>1,429</td><td class=num>99</td><td class=num>10%</td></tr><tr><td>SOURCE (Adam)</td><td class=num>8 min</td><td class=num>7 min</td><td class=num>13 s</td><td class=num>3 min</td><td class=num>1,185</td><td class=num>168</td><td class=num>1%</td></tr><tr><td>EKFAC</td><td class=num>77 s</td><td class=num>61 s</td><td class=num>3 s</td><td class=num>77 s</td><td class=num>1,260</td><td class=num>109</td><td class=num>10%</td></tr><tr><td>KFAC</td><td class=num>76 s</td><td class=num>27 s</td><td class=num>3 s</td><td class=num>77 s</td><td class=num>2,764</td><td class=num>61</td><td class=num>12%</td></tr><tr><td>TrackStar (no optimizer)</td><td class=num>6 min</td><td class=num>4 s</td><td class=num>0 s</td><td class=num>1 s</td><td class=num>89,976</td><td class=num>28,049</td><td class=num>7%</td></tr><tr><td>TrackStar (Adam)</td><td class=num>7 min</td><td class=num>5 s</td><td class=num>0 s</td><td class=num>1 s</td><td class=num>77,828</td><td class=num>26,098</td><td class=num>7%</td></tr><tr><td>Gradient cosine similarity</td><td class=num>35 s</td><td class=num>4 s</td><td class=num>1 s</td><td class=num>48 s</td><td class=num>7,801</td><td class=num>40</td><td class=num>7%</td></tr><tr><td>Gradient dot product</td><td class=num>35 s</td><td class=num>4 s</td><td class=num>1 s</td><td class=num>33 s</td><td class=num>8,161</td><td class=num>43</td><td class=num>6%</td></tr><tr><td>TRAK (8-model ensemble)</td><td class=num>11 min</td><td class=num>3.7 h</td><td class=num>6 s</td><td class=num>0 s</td><td class=num>49</td><td class=num>9,599</td><td class=num>1%</td></tr><tr><td>Projected gradient cosine similarity</td><td class=num>30 s</td><td class=num>4 s</td><td class=num>0 s</td><td class=num>15 s</td><td class=num>7,658</td><td class=num>629</td><td class=num>0%</td></tr><tr><td>KFAC (projection 64)</td><td class=num>66 s</td><td class=num>27 s</td><td class=num>0 s</td><td class=num>46 s</td><td class=num>2,464</td><td class=num>788</td><td class=num>15%</td></tr></tbody></table></div>
+<!-- /speed-tables:model -->
+  <p>Unrolled Gauss-Newton is <a href="https://github.com/EleutherAI/bergson/pull/546">bergson #546</a>, not yet merged, estimated with it merged onto <code>main</code>; its real run took 79 minutes against an estimate of 78. MAGIC and unrolled Gauss-Newton run on the checkpoints of a training run that already exists, so their times leave out training the model (the dashed line), and unrolled Gauss-Newton's measured run has its estimated training taken off; their checkpoint writes during training, about 24 seconds at 4,608 documents, stay in. MAGIC's time also leaves out the leaderboard's validation bank, SOURCE's the training run that saves its checkpoints and is estimated with the recipe's plain step, which differs from the Adam-preconditioned one only in reading each checkpoint's optimizer state, and TRAK's counts its eight members as four trainings on the full set. Nearly all of TRAK's 34 hours is its global projection: bergson regenerates the 85M × 4096 random matrix for every two-document batch, once in the Gram pass and once in the scoring pass of each member, so a larger <code>token_batch_size</code> would cut its time roughly in proportion. BM25, semantic search and activation similarity don't run through bergson and aren't estimated. TrackStar can't score a single query on 8 GPUs, so its cost models are fitted without that point. Recipes, sweep scripts and estimates are in <a href="https://github.com/labyrinthresearch/bergson-leaderboard/tree/main/speed"><code>speed/</code></a>.</p>
   <footer>
     <a href="https://github.com/EleutherAI/bergson">EleutherAI/bergson</a> ·
     <a href="https://github.com/labyrinthresearch/bergson-leaderboard">plot source</a>

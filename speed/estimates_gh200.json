@@ -1,0 +1,1610 @@
+{
+ "1": {
+  "ekfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45502996958498,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.535468387819019,
+     "Covariance fit": 49.96388883759345,
+     "Eigenvalue correction": 89.01998287116,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45503481385728,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.6129385395780902,
+     "Covariance fit": 799.4222214015554,
+     "Eigenvalue correction": 1424.319725938604,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "ekfac_astra": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01624654606174,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.535468387819019,
+     "Covariance fit": 49.96388883759345,
+     "Eigenvalue correction": 89.01998287116,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 742.9882187447812,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01625139033403,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.6129385395780902,
+     "Covariance fit": 799.4222214015554,
+     "Eigenvalue correction": 1424.319725938604,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 742.9882187447812,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "ekfac_cg": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01624654606162,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.535468387819019,
+     "Covariance fit": 49.96388883759345,
+     "Eigenvalue correction": 89.01998287116,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 355.2772204833633,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 23.76827049255371
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01625139033403,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.6129385395780902,
+     "Covariance fit": 799.4222214015554,
+     "Eigenvalue correction": 1424.319725938604,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 355.2772204833633,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 23.76827049255371
+   }
+  ],
+  "gradient_cosine": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 43.46870423769147,
+     "Query gradients": 4.449638771526923,
+     "Training gradients and scoring": 36.375104353084936
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 43.468709081963766,
+     "Query gradients": 4.449638771526923,
+     "Training gradients and scoring": 523.6626105196938
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine_projected": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 42.474591456819006,
+     "Query gradients": 0.43597929310251643,
+     "Training gradients and scoring": 38.420169908498266
+    },
+    "peak_gib": 2.233126640319824
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 42.474591456819006,
+     "Query gradients": 0.43597929310251643,
+     "Training gradients and scoring": 613.9648277070235
+    },
+    "peak_gib": 2.233384132385254
+   }
+  ],
+  "gradient_dot": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 43.46870423769147,
+     "Query gradients": 4.449638771131416,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 43.468709081963766,
+     "Query gradients": 4.449638771131416,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45502996958501,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.3853194913293236,
+     "Covariance fit": 49.96388883759345,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45503481385728,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.3982311832891687,
+     "Covariance fit": 799.4222214015554,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.02182922454942,
+     "Query gradients": 0.435979293101784,
+     "Eigendecomposition": 1.3853194913293236,
+     "Covariance fit": 49.96388883759345,
+     "Query preconditioning": 1.1734769134123486,
+     "Training gradients and scoring": 31.601850809081668
+    },
+    "peak_gib": 2.6438331604003906
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.02182922454942,
+     "Query gradients": 0.435979293101784,
+     "Eigendecomposition": 1.3982311832891687,
+     "Covariance fit": 799.4222214015554,
+     "Query preconditioning": 1.1734769134123486,
+     "Training gradients and scoring": 504.8717221164396
+    },
+    "peak_gib": 2.6438331604003906
+   }
+  ],
+  "lissa": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 60.473794575163524,
+     "Query gradients": 4.449688396986861,
+     "LiSSA iterations": 48301.40277928665,
+     "Training gradients and scoring": 29.587430097984736
+    },
+    "peak_gib": 18.18049192428589
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 60.4737994194431,
+     "Query gradients": 4.449688396986861,
+     "LiSSA iterations": 48301.40277928665,
+     "Training gradients and scoring": 415.05982243799326
+    },
+    "peak_gib": 18.18074941635132
+   }
+  ],
+  "magic": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 55.30988790731294,
+     "Backward through training": 14236.480258054622,
+     "Trainer-state copies": 99.39473830359734,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 106.36410938574113,
+     "Startup and overhead": 42.01034035044329,
+     "Query gradients": 4.610129961553789
+    },
+    "peak_gib": 41.408162117004395
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 884.958206517007,
+     "Backward through training": 235158.335849849,
+     "Trainer-state copies": 1931.0977727556055,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 425.4564375429645,
+     "Startup and overhead": 42.01049724005992,
+     "Query gradients": 4.610129961553789
+    },
+    "peak_gib": 41.408934593200684
+   }
+  ],
+  "shampoo": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45502996958501,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.9995717807185553,
+     "Covariance fit": 36.051081444829826,
+     "Eigenvalue correction": 89.01998287116,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 77.45503481385728,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 2.5068168219981897,
+     "Covariance fit": 576.8173031173415,
+     "Eigenvalue correction": 1424.319725938604,
+     "Query preconditioning": 20.256027151277127,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "shampoo_astra": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01624654606174,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 1.9995717807185553,
+     "Covariance fit": 36.051081444829826,
+     "Eigenvalue correction": 89.01998287116,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 742.9882187447812,
+     "Training gradients and scoring": 29.5567852536681
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 95.01625139033403,
+     "Query gradients": 4.449638771131416,
+     "Eigendecomposition": 2.5068168219981897,
+     "Covariance fit": 576.8173031173415,
+     "Eigenvalue correction": 1424.319725938604,
+     "Query preconditioning": 20.256027151277127,
+     "ASTRA refinement": 742.9882187447812,
+     "Training gradients and scoring": 414.56950492902445
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "source_adam": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 56.267567555326735,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 508.57273454540143,
+     "Eigendecomposition": 1.7292741162474121,
+     "Covariance fit": 299.7833330255607,
+     "Aggregate segment covariances": 4.7188250410942345,
+     "Checkpoint averaged lambda": 534.4027562744482,
+     "Sum sharded dirs": 0.14291061395509033,
+     "Query gradients": 4.449638771131416,
+     "Apply eigfn to query": 100.45017122280962,
+     "Training gradients and scoring": 177.3407115220086
+    },
+    "peak_gib": 19.721797466278076
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 900.2810808852278,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 508.57285724618407,
+     "Eigendecomposition": 2.105557710505758,
+     "Covariance fit": 4796.533328409332,
+     "Aggregate segment covariances": 4.9512354963714476,
+     "Checkpoint averaged lambda": 8546.201214679111,
+     "Sum sharded dirs": 0.14291061395509033,
+     "Query gradients": 4.449638771131416,
+     "Apply eigfn to query": 100.45017122280962,
+     "Training gradients and scoring": 2487.417029574147
+    },
+    "peak_gib": 19.722054958343506
+   }
+  ],
+  "trackstar_adam_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 80.50304461755337,
+     "Eigendecomposition": 24.434727293528088,
+     "Covariance fit": 36.36038468284048,
+     "Query gradients": 5.987465048975373,
+     "Training gradients and scoring": 47.457070531919015
+    },
+    "peak_gib": 8.352945327758789
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 80.50304461755337,
+     "Eigendecomposition": 24.434727293528088,
+     "Covariance fit": 78.40232171529028,
+     "Query gradients": 5.987465048975373,
+     "Training gradients and scoring": 677.0156478542648
+    },
+    "peak_gib": 8.352945327758789
+   }
+  ],
+  "trackstar_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 79.1171443731058,
+     "Eigendecomposition": 24.32725712294578,
+     "Covariance fit": 31.89389862368797,
+     "Query gradients": 5.855259759517106,
+     "Training gradients and scoring": 42.96485799558942
+    },
+    "peak_gib": 6.500195503234863
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 79.11714437310577,
+     "Eigendecomposition": 24.32725712294578,
+     "Covariance fit": 68.77217938877914,
+     "Query gradients": 5.855259759517106,
+     "Training gradients and scoring": 606.3305715938465
+    },
+    "peak_gib": 6.500195503234863
+   }
+  ],
+  "trak": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 56.01186073566235,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 714.8270161374833,
+     "Eigendecomposition": 2.077840198623754,
+     "Covariance fit": 18825.344512022162,
+     "Query gradients": 229.69335428486937,
+     "Training gradients and scoring": 18826.882477488933,
+     "Training-set probabilities": 132.985571028615,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 19.721797466278076
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 896.1897717705976,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 714.827109772748,
+     "Eigendecomposition": 2.077840198623754,
+     "Covariance fit": 301205.51219236763,
+     "Query gradients": 229.69335428486937,
+     "Training gradients and scoring": 301215.55549587304,
+     "Training-set probabilities": 2127.76913645784,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 19.722054958343506
+   }
+  ],
+  "unrolled_gauss_newton": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 55.0529662527199,
+     "Backward through training": 2045.7603424178974,
+     "Trainer-state copies": 3.9757895321438936,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 4.254564375429645,
+     "Startup and overhead": 25.92038299828421,
+     "Query gradients": 4.394377803261428
+    },
+    "peak_gib": 35.94201946258545
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 880.8474600435184,
+     "Backward through training": 33025.781298700866,
+     "Trainer-state copies": 77.24391091022422,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 17.01825750171858,
+     "Startup and overhead": 25.92048183987538,
+     "Query gradients": 4.394377803261428
+    },
+    "peak_gib": 35.94227695465088
+   }
+  ]
+ },
+ "2": {
+  "ekfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.74826354430687,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 1.0280237801532524,
+     "Covariance fit": 50.28625502992911,
+     "Eigenvalue correction": 78.30777451178533,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 16.723056057491814
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.74826838857962,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 1.2069429401682503,
+     "Covariance fit": 804.5800804789337,
+     "Eigenvalue correction": 1252.9243921885577,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 209.22943314355084
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.176845564595766,
+     "Query gradients": 2.254337275992204,
+     "Training gradients and scoring": 20.132215607200102
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.17685040886806,
+     "Query gradients": 2.254337275992204,
+     "Training gradients and scoring": 263.7759859388855
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine_projected": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 55.1827327837233,
+     "Query gradients": 0.2540847122790061,
+     "Training gradients and scoring": 19.235376108214595
+    },
+    "peak_gib": 2.233126640319824
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 55.1827327837233,
+     "Query gradients": 0.2540847122790061,
+     "Training gradients and scoring": 307.0077222558989
+    },
+    "peak_gib": 2.233384132385254
+   }
+  ],
+  "gradient_dot": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.17684556459576,
+     "Query gradients": 2.254337275656022,
+     "Training gradients and scoring": 16.723056057491814
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.176850408868034,
+     "Query gradients": 2.254337275656022,
+     "Training gradients and scoring": 209.22943314355084
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.7482635443069,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 0.873230069167008,
+     "Covariance fit": 50.28625502992911,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 16.723056057491814
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.74826838857916,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 0.8861417611268531,
+     "Covariance fit": 804.5800804789337,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 209.22943314355084
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.38457753875535,
+     "Query gradients": 0.25408471227854834,
+     "Eigendecomposition": 0.873230069167008,
+     "Covariance fit": 50.28625502992911,
+     "Query preconditioning": 1.1687885668720168,
+     "Training gradients and scoring": 15.82621655850609
+    },
+    "peak_gib": 2.4966163635253906
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.38457753875558,
+     "Query gradients": 0.25408471227854834,
+     "Eigendecomposition": 0.8861417611268531,
+     "Covariance fit": 804.5800804789337,
+     "Query preconditioning": 1.1687885668720168,
+     "Training gradients and scoring": 252.46116946056296
+    },
+    "peak_gib": 2.4966163635253906
+   }
+  ],
+  "magic": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 31.562358920348274,
+     "Backward through training": 7920.674299583146,
+     "Trainer-state copies": 99.39473830359734,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 106.36410938574113,
+     "Startup and overhead": 47.90322767099152,
+     "Query gradients": 4.800439810475597
+    },
+    "peak_gib": 28.02381467819214
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 504.9977427255724,
+     "Backward through training": 130939.10331604345,
+     "Trainer-state copies": 1931.0977727556055,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 425.4564375429645,
+     "Startup and overhead": 47.91363290842719,
+     "Query gradients": 4.800439810475597
+    },
+    "peak_gib": 28.024587154388428
+   }
+  ],
+  "shampoo": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.74666550431871,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 1.707902986187717,
+     "Covariance fit": 24.522018140119208,
+     "Eigenvalue correction": 78.30777451178533,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 16.723056057491814
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 102.74667034859101,
+     "Query gradients": 2.254337275656022,
+     "Eigendecomposition": 3.010730948356584,
+     "Covariance fit": 392.3522902419519,
+     "Eigenvalue correction": 1252.9243921885577,
+     "Query preconditioning": 23.606472035157463,
+     "Training gradients and scoring": 209.22943314355084
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "source_adam": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 32.29987238196628,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 691.5378438580016,
+     "Eigendecomposition": 1.395796083260039,
+     "Covariance fit": 301.7175301795747,
+     "Aggregate segment covariances": 3.5674231428927863,
+     "Checkpoint averaged lambda": 470.0121859293253,
+     "Sum sharded dirs": 0.08555262678753367,
+     "Query gradients": 2.254337275656022,
+     "Apply eigfn to query": 117.20239564221086,
+     "Training gradients and scoring": 100.33833634495089
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 516.7979581114605,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 691.5379665587931,
+     "Eigendecomposition": 2.380773727053946,
+     "Covariance fit": 4827.480482873602,
+     "Aggregate segment covariances": 3.7998335981700073,
+     "Checkpoint averaged lambda": 7517.71189198996,
+     "Sum sharded dirs": 0.08555262678753367,
+     "Query gradients": 2.254337275656022,
+     "Apply eigfn to query": 117.20239564221086,
+     "Training gradients and scoring": 1255.376598861305
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "trackstar_adam_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.919327271362,
+     "Eigendecomposition": 24.06693032846735,
+     "Covariance fit": 18.213695046188324,
+     "Query gradients": 5.755826240018534,
+     "Training gradients and scoring": 26.471812747511798
+    },
+    "peak_gib": 8.352945327758789
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.91932727136196,
+     "Eigendecomposition": 24.06693032846735,
+     "Covariance fit": 39.234663562413225,
+     "Query gradients": 5.755826240018534,
+     "Training gradients and scoring": 341.25111865700654
+    },
+    "peak_gib": 8.352945327758789
+   }
+  ],
+  "trackstar_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.53342702691437,
+     "Eigendecomposition": 23.978477017849514,
+     "Covariance fit": 15.976621411072426,
+     "Query gradients": 5.646321897389344,
+     "Training gradients and scoring": 24.186029001981627
+    },
+    "peak_gib": 6.500195503234863
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.53342702691437,
+     "Eigendecomposition": 23.978477017849514,
+     "Covariance fit": 34.41576179361904,
+     "Query gradients": 5.646321897389344,
+     "Training gradients and scoring": 305.8689030495271
+    },
+    "peak_gib": 6.500195503234863
+   }
+  ],
+  "trak": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 32.04416556230183,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 873.6786448965984,
+     "Eigendecomposition": 2.078065119599948,
+     "Covariance fit": 9412.672256011036,
+     "Query gradients": 131.636686340169,
+     "Training gradients and scoring": 9413.926935220146,
+     "Training-set probabilities": 132.985571028615,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 11.307561874389648
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 512.7066489968292,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 873.6787385317539,
+     "Eigendecomposition": 2.078065119599948,
+     "Covariance fit": 150602.75609618335,
+     "Query gradients": 131.636686340169,
+     "Training gradients and scoring": 150608.26358239932,
+     "Training-set probabilities": 2127.76913645784,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 11.307819366455078
+   }
+  ],
+  "unrolled_gauss_newton": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 31.30543726575515,
+     "Backward through training": 908.9587356911651,
+     "Trainer-state copies": 1.9878947660719468,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 2.1272821877148225,
+     "Startup and overhead": 32.27080399598954,
+     "Query gradients": 4.5861829653587325
+    },
+    "peak_gib": 24.661617279052734
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 500.8869962520824,
+     "Backward through training": 14626.820937100656,
+     "Trainer-state copies": 38.62195545511211,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 8.50912875085929,
+     "Startup and overhead": 32.27090043461121,
+     "Query gradients": 4.5861829653587325
+    },
+    "peak_gib": 24.6639347076416
+   }
+  ]
+ },
+ "4": {
+  "ekfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59264556168765,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 1.8565765685514122,
+     "Covariance fit": 41.9782356264395,
+     "Eigenvalue correction": 65.97607579109443,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 10.306223954396026
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59265040595994,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 2.3080732847604177,
+     "Covariance fit": 671.6517700230561,
+     "Eigenvalue correction": 1055.6172126575452,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 106.55947036404163
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.118637099019594,
+     "Query gradients": 1.1283917043433058,
+     "Training gradients and scoring": 12.010803729250128
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.11864194329189,
+     "Query gradients": 1.1283917043433058,
+     "Training gradients and scoring": 133.83274676170896
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine_projected": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.12452431814713,
+     "Query gradients": 0.1302558560213269,
+     "Training gradients and scoring": 9.64301170306496
+    },
+    "peak_gib": 2.233126640319824
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.12452431814713,
+     "Query gradients": 0.1302558560213269,
+     "Training gradients and scoring": 153.52924264352075
+    },
+    "peak_gib": 2.233384132385254
+   }
+  ],
+  "gradient_dot": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.118637099019594,
+     "Query gradients": 1.128391704106001,
+     "Training gradients and scoring": 10.306223954396026
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.11864194329189,
+     "Query gradients": 1.128391704106001,
+     "Training gradients and scoring": 106.55947036404163
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59264556168762,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 1.6934470026369286,
+     "Covariance fit": 41.9782356264395,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 10.306223954396026
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59265040595994,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 1.877487242534854,
+     "Covariance fit": 671.6517700230561,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 106.55947036404163
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.26371692587817,
+     "Query gradients": 0.13025585602096065,
+     "Eigendecomposition": 1.6934470026369286,
+     "Covariance fit": 41.9782356264395,
+     "Query preconditioning": 1.1664443936018507,
+     "Training gradients and scoring": 7.938431928210749
+    },
+    "peak_gib": 2.4219093322753906
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.26371692587817,
+     "Query gradients": 0.13025585602096065,
+     "Eigendecomposition": 1.877487242534854,
+     "Covariance fit": 671.6517700230561,
+     "Query preconditioning": 1.1664443936018507,
+     "Training gradients and scoring": 126.25596624585219
+    },
+    "peak_gib": 2.4219093322753906
+   }
+  ],
+  "magic": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 21.867903281102762,
+     "Backward through training": 5120.058929999772,
+     "Trainer-state copies": 99.39473830359734,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 106.36410938574113,
+     "Startup and overhead": 48.100093371368686,
+     "Query gradients": 6.599423928789887
+    },
+    "peak_gib": 28.023562908172607
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 349.8864524976442,
+     "Backward through training": 84836.66331747672,
+     "Trainer-state copies": 1931.0977727556055,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 425.4564375429645,
+     "Startup and overhead": 48.09935316199846,
+     "Query gradients": 6.599423928789887
+    },
+    "peak_gib": 28.024335384368896
+   }
+  ],
+  "shampoo": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59264556168765,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 1.8733426796988824,
+     "Covariance fit": 43.3462524364941,
+     "Eigenvalue correction": 65.97607579109443,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 10.306223954396026
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.59265040595994,
+     "Query gradients": 1.128391704106001,
+     "Eigendecomposition": 4.011149962764632,
+     "Covariance fit": 693.5400389839294,
+     "Eigenvalue correction": 1055.6172126575452,
+     "Query preconditioning": 33.29615373952139,
+     "Training gradients and scoring": 106.55947036404163
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "source_adam": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 22.671915642056565,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 704.7920877037366,
+     "Eigendecomposition": 1.2269572063483936,
+     "Covariance fit": 251.869413758637,
+     "Aggregate segment covariances": 3.805021168202959,
+     "Checkpoint averaged lambda": 395.9644966956053,
+     "Sum sharded dirs": 0.058629843790934014,
+     "Query gradients": 1.128391704106001,
+     "Apply eigfn to query": 165.6508041640305,
+     "Training gradients and scoring": 61.83734372637617
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 362.75065027290503,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 704.7922104045304,
+     "Eigendecomposition": 2.8206288996778617,
+     "Covariance fit": 4029.9106201383365,
+     "Aggregate segment covariances": 4.037431623480173,
+     "Checkpoint averaged lambda": 6333.8113178943095,
+     "Sum sharded dirs": 0.058629843790934014,
+     "Query gradients": 1.128391704106001,
+     "Apply eigfn to query": 165.6508041640305,
+     "Training gradients and scoring": 639.3568221842498
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "trackstar_adam_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 107.80291034020962,
+     "Eigendecomposition": 23.842768374475575,
+     "Covariance fit": 9.107007131658357,
+     "Query gradients": 5.5988643688734765,
+     "Training gradients and scoring": 15.979216350300387
+    },
+    "peak_gib": 8.352945327758789
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 107.80291034020962,
+     "Eigendecomposition": 23.842768374475575,
+     "Covariance fit": 19.64341268774175,
+     "Query gradients": 5.5988643688734765,
+     "Training gradients and scoring": 173.36892717166725
+    },
+    "peak_gib": 8.352936744689941
+   }
+  ],
+  "trackstar_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 106.41701009576204,
+     "Eigendecomposition": 23.76590834919394,
+     "Covariance fit": 7.98847031410035,
+     "Query gradients": 5.504464186928828,
+     "Training gradients and scoring": 14.796647000169957
+    },
+    "peak_gib": 6.500195503234863
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 106.41701009576204,
+     "Eigendecomposition": 23.76590834919394,
+     "Covariance fit": 17.23013119780509,
+     "Query gradients": 5.504464186928828,
+     "Training gradients and scoring": 155.63814189055628
+    },
+    "peak_gib": 6.500195503234863
+   }
+  ],
+  "trak": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 22.416208822392136,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 885.4510023982,
+     "Eigendecomposition": 2.0784375400256065,
+     "Covariance fit": 4706.336128005539,
+     "Query gradients": 66.26592708199148,
+     "Training gradients and scoring": 4707.449424045688,
+     "Training-set probabilities": 132.985571028615,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 9.636516094207764
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 358.6593411582742,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 885.4510960333556,
+     "Eigendecomposition": 2.0784375400256065,
+     "Covariance fit": 75301.37804809125,
+     "Query gradients": 66.26592708199148,
+     "Training gradients and scoring": 75304.61821056818,
+     "Training-set probabilities": 2127.76913645784,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 9.636516094207764
+   }
+  ],
+  "unrolled_gauss_newton": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 21.610981626509638,
+     "Backward through training": 650.6386649837483,
+     "Trainer-state copies": 1.9878947660719468,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 2.1272821877148225,
+     "Startup and overhead": 32.74143003594071,
+     "Query gradients": 6.382019920117217
+    },
+    "peak_gib": 17.994050979614258
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 345.7757060241542,
+     "Backward through training": 10467.847924077332,
+     "Trainer-state copies": 38.62195545511211,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 8.50912875085929,
+     "Startup and overhead": 32.74152527307764,
+     "Query gradients": 6.382019920117217
+    },
+    "peak_gib": 17.995595932006836
+   }
+  ]
+ },
+ "8": {
+  "ekfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11881546080102,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 10.988493783127568,
+     "Covariance fit": 39.81182216787764,
+     "Eigenvalue correction": 64.54462680954022,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 7.097825617210393
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11882030507331,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 11.918937574280976,
+     "Covariance fit": 636.9891546860335,
+     "Eigenvalue correction": 1032.7140289526549,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 55.22456718358493
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.39041139101178,
+     "Query gradients": 0.572113761823726,
+     "Training gradients and scoring": 7.950115504637451
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.39041623528408,
+     "Query gradients": 0.572113761823726,
+     "Training gradients and scoring": 68.8612053824186
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "gradient_cosine_projected": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.39629861013932,
+     "Query gradients": 0.07611790781292904,
+     "Training gradients and scoring": 4.846847214852493
+    },
+    "peak_gib": 2.233126640319824
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 56.39629861013932,
+     "Query gradients": 0.07611790781292904,
+     "Training gradients and scoring": 76.7900810466296
+    },
+    "peak_gib": 2.233384132385254
+   }
+  ],
+  "gradient_dot": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.390411391011774,
+     "Query gradients": 0.5721137616655229,
+     "Training gradients and scoring": 7.097825617210393
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 57.39041623528408,
+     "Query gradients": 0.5721137616655229,
+     "Training gradients and scoring": 55.22456718358493
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11881546080104,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 10.80696142325234,
+     "Covariance fit": 39.81182216787764,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 7.097825617210393
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11882030507343,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 11.263361666737143,
+     "Covariance fit": 636.9891546860335,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 55.22456718358493
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "kfac_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.80726550986255,
+     "Query gradients": 0.07611790781256284,
+     "Eigendecomposition": 10.80696142325234,
+     "Covariance fit": 39.81182216787764,
+     "Query preconditioning": 1.165272306965841,
+     "Training gradients and scoring": 3.994557327425385
+    },
+    "peak_gib": 2.3845558166503906
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 104.80726550986255,
+     "Query gradients": 0.07611790781256284,
+     "Eigendecomposition": 11.263361666737143,
+     "Covariance fit": 636.9891546860335,
+     "Query preconditioning": 1.165272306965841,
+     "Training gradients and scoring": 63.15344284779483
+    },
+    "peak_gib": 2.3845558166503906
+   }
+  ],
+  "magic": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 16.323898941360223,
+     "Backward through training": 4131.622392169786,
+     "Trainer-state copies": 99.39473830359734,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 106.36410938574113,
+     "Startup and overhead": 48.32236093848685,
+     "Query gradients": 6.999195545722819
+    },
+    "peak_gib": 19.33269739151001
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 261.1823830617636,
+     "Backward through training": 68282.47813356461,
+     "Trainer-state copies": 1931.0977727556055,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 425.4564375429645,
+     "Startup and overhead": 48.23594371772632,
+     "Query gradients": 6.999195545722819
+    },
+    "peak_gib": 19.3334698677063
+   }
+  ],
+  "shampoo": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11881546080102,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 1.9882555260493855,
+     "Covariance fit": 12.649590797136025,
+     "Eigenvalue correction": 64.54462680954022,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 7.097825617210393
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 105.11882030507331,
+     "Query gradients": 0.5721137616655229,
+     "Eigendecomposition": 5.754780523478561,
+     "Covariance fit": 202.3934527541781,
+     "Eigenvalue correction": 1032.7140289526549,
+     "Query preconditioning": 56.34402232317954,
+     "Training gradients and scoring": 55.22456718358493
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "source_adam": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 17.3558666253969,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 708.6135605785238,
+     "Eigendecomposition": 1.2474185190082085,
+     "Covariance fit": 238.87093300726582,
+     "Aggregate segment covariances": 3.357045870304413,
+     "Checkpoint averaged lambda": 387.36398343959956,
+     "Sum sharded dirs": 0.05307601493587781,
+     "Query gradients": 0.5721137616655229,
+     "Apply eigfn to query": 280.8873680893441,
+     "Training gradients and scoring": 42.586953703262346
+    },
+    "peak_gib": 18.18049144744873
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 277.6938660063504,
+     "Checkpoint saves": 1.3354566624934057,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 708.6136832793183,
+     "Eigendecomposition": 4.080612640482817,
+     "Covariance fit": 3821.9349281162013,
+     "Aggregate segment covariances": 3.589456325581634,
+     "Checkpoint averaged lambda": 6196.380396298288,
+     "Sum sharded dirs": 0.05307601493587781,
+     "Query gradients": 0.5721137616655229,
+     "Apply eigfn to query": 280.8873680893441,
+     "Training gradients and scoring": 331.34740310150954
+    },
+    "peak_gib": 18.18074893951416
+   }
+  ],
+  "trackstar_adam_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 108.346458924194,
+     "Eigendecomposition": 23.6898441512324,
+     "Covariance fit": 4.55861103988195,
+     "Query gradients": 5.528174140889662,
+     "Training gradients and scoring": 10.732935866056986
+    },
+    "peak_gib": 8.352945327758789
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 108.346458924194,
+     "Eigendecomposition": 23.6898441512324,
+     "Covariance fit": 9.855368657203105,
+     "Query gradients": 5.528174140889662,
+     "Training gradients and scoring": 89.42790963829552
+    },
+    "peak_gib": 8.352945327758789
+   }
+  ],
+  "trackstar_p64": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 106.96055867974641,
+     "Eigendecomposition": 23.615788633527337,
+     "Covariance fit": 3.999342631102939,
+     "Query gradients": 5.441311811619014,
+     "Training gradients and scoring": 10.101973713626464
+    },
+    "peak_gib": 6.500195503234863
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Startup and overhead": 106.96055867974638,
+     "Eigendecomposition": 23.615788633527337,
+     "Covariance fit": 8.644897306695135,
+     "Query gradients": 5.441311811619014,
+     "Training gradients and scoring": 80.52283952036878
+    },
+    "peak_gib": 6.500195503234863
+   }
+  ],
+  "trak": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 17.100159805732456,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 888.8481804231184,
+     "Eigendecomposition": 2.0787654651368976,
+     "Covariance fit": 2353.1680640027666,
+     "Query gradients": 33.65109058432927,
+     "Training gradients and scoring": 2354.2108101733843,
+     "Training-set probabilities": 132.985571028615,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 9.636516094207764
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 273.6025568917193,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 0.0,
+     "Startup and overhead": 888.8482740583013,
+     "Eigendecomposition": 2.0787654651368976,
+     "Covariance fit": 37650.68902404519,
+     "Query gradients": 33.65109058432927,
+     "Training gradients and scoring": 37652.79615032703,
+     "Training-set probabilities": 2127.76913645784,
+     "Gram inversion": 0.8934580934088312
+    },
+    "peak_gib": 9.636516094207764
+   }
+  ],
+  "unrolled_gauss_newton": [
+   {
+    "dataset_size": 4608,
+    "queries": 50,
+    "stages": {
+     "Training replay": 16.06697728676709,
+     "Backward through training": 579.8404941170476,
+     "Trainer-state copies": 1.9878947660719468,
+     "Checkpoint saves": 3.0524723714134985,
+     "Checkpoint I/O": 2.1272821877148225,
+     "Startup and overhead": 32.87716119124131,
+     "Query gradients": 6.778758229770704
+    },
+    "peak_gib": 14.029404163360596
+   },
+   {
+    "dataset_size": 73728,
+    "queries": 50,
+    "stages": {
+     "Training replay": 257.07163658827346,
+     "Backward through training": 9320.293178637474,
+     "Trainer-state copies": 38.62195545511211,
+     "Checkpoint saves": 12.209889485653994,
+     "Checkpoint I/O": 8.50912875085929,
+     "Startup and overhead": 32.877255627388415,
+     "Query gradients": 6.778758229770704
+    },
+    "peak_gib": 14.030434131622314
+   }
+  ]
+ }
+}
