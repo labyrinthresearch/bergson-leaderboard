@@ -10,6 +10,7 @@ import copy
 import os
 import subprocess
 import sys
+import zlib
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -165,7 +166,9 @@ def run(method: str, size: int, queries: int) -> str:
     cmd = [PYTHON, "-m", "bergson.estimate", "--rates", RATES, "--nodes", str(NODES), "--json", f"{stem}.json", f"{stem}.yaml"]
     tree = str(LB / TREES.get(method, "tree"))
     print(" ".join(["PYTHONPATH=" + tree, "NCCL_P2P_LEVEL=SYS", *cmd]), flush=True)
-    env = {**os.environ, "PYTHONPATH": tree, "NCCL_P2P_LEVEL": "SYS"}
+    # A port of its own: estimates side by side start process groups in their own process
+    port = 20000 + zlib.crc32(str(stem).encode()) % 20000
+    env = {**os.environ, "PYTHONPATH": tree, "NCCL_P2P_LEVEL": "SYS", "MASTER_PORT": str(port)}
     with open(f"{stem}.log", "w") as log:
         try:
             code = subprocess.run(

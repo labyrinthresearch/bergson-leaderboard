@@ -13,7 +13,14 @@ How they were made:
    ```
 
    With no GPU visible, the estimator replays on stand-ins for the node's GPUs. `sweep.py` sets every recipe's `nproc_per_node` to 8, so each method gets the whole node.
-4. `compile.py estimates.json` collects the estimates per stage.
+4. For the calculator's node counts, `sweep.py` also estimates every method on 1, 2, 4 and 8 nodes of 4x GH200 (bergson-estimate's `gh200x4` rates, calibrated across nodes), at 4,608 and 73,728 documents with 50 queries:
+
+   ```bash
+   for n in 1 2 4 8; do CUDA_VISIBLE_DEVICES= RATES=gh200x4 NODES=$n GPUS=4 EST=est_gh200/n$n POINTS=anchors WORKERS=2 python sweep.py; done
+   ```
+
+   Each estimate over several nodes replays every rank of the first node in its own process, so keep `WORKERS` low at 8 nodes. bergson runs ASTRA (EKFAC + CG, EKFAC + ASTRA, Shampoo + ASTRA) and LiSSA on one node only, so they have no estimates past it.
+5. `compile.py estimates.json estimates_gh200.json` collects the estimates per stage. `speed_plots.py` prices each stage group on n GH200 nodes at its A40 cost model times its estimated time there over its A40 time, interpolated in log dataset size between the two anchors.
 
 Per method:
 

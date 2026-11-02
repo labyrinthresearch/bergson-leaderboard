@@ -524,6 +524,8 @@ def node_ratios(models) -> dict:
     return out
 
 
+# Methods bergson runs on one node only: ASTRA and LiSSA refuse more
+SINGLE_NODE = {"ekfac_cg", "ekfac_astra", "shampoo_astra", "lissa"}
 # The dataset sizes node counts were estimated at, with 50 queries
 ANCHORS = [4608, 73728]
 
@@ -545,6 +547,7 @@ def share_data(models) -> str:
             for m, model in models.items()
         ],
         "nodes": node_ratios(models),
+        "single_node": sorted(SINGLE_NODE),
     }
     return f'<script type="application/json" id="share-data">{json.dumps(data)}</script>'
 
